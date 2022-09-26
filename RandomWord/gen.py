@@ -2,7 +2,7 @@ import random
 import string
 
 def get_random_string(length):
-    letters = string.ascii_letters
+    letters = string.ascii_letters + string.punctuation + string.digits
     return ''.join(random.choice(letters) for i in range(length))
 
 def main() :
@@ -13,10 +13,8 @@ def main() :
         words.append(get_random_string(random.randint(3, 6)))
         i = i + 1
         
-    words_txt = ""
+    words_txt = "["
     f = open("words.txt", "w", encoding="utf-8")
-    count = 0
-    wl = '['
 
     for word in words :
         words_txt = words_txt + '"' + word + '", '
