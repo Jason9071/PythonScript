@@ -1,15 +1,14 @@
 const { MerkleTree } = require('merkletreejs')
 const keccak256 = require('keccak256')
+const whitelistJson = require('./whitelist.json')
 
-let addresses = []
-let leaves = addresses.map(addr => keccak256(addr))
+const addresses = JSON.parse(whitelistJson["whitelist"]);
+const leaves = addresses.map(addr => keccak256(addr))
 
-// Create tree
-let merkleTree = new MerkleTree(leaves, keccak256, { sortPairs: true })
-// Get root
-let rootHash = merkleTree.getRoot()
+const merkleTree = new MerkleTree(leaves, keccak256, { sortPairs: true })
 
-// Pretty-print tree
+const rootHash = merkleTree.getRoot()
+
 console.log(merkleTree.toString())
 
 
