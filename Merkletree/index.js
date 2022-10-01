@@ -1,6 +1,6 @@
-const { MerkleTree } = require('merkletreejs')
-const keccak256 = require('keccak256')
-const whitelistJson = require('./whitelist.json')
+const { MerkleTree } = require('merkletreejs');
+const keccak256 = require('keccak256');
+const whitelistJson = require('./whitelist.json');
 
 const addresses = JSON.parse(whitelistJson["whitelist"]);
 const leaves = addresses.map(addr => keccak256(addr))
